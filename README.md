@@ -12,3 +12,12 @@ Powered By
 * [YQL](http://developer.yahoo.com/yql/) for fetching data.
 * [jQuery](http://jquery.com/)
 * [CoffeeScript](http://jashkenas.github.com/coffee-script/)
+
+
+Tested Browser
+--------------
+* Firefox 3.6
+* Safari 5
+* MobileSafari on iPad (iOS 3.2)
+* Internet Explorer 7
+* Internet Explorer 6 (tested not to work!)
