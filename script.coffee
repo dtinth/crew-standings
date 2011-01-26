@@ -49,6 +49,14 @@ parseNumber = (number) ->
 parseIntNumber = (number) ->
 	parseInt (number + '').replace(/[^0-9]/g, ''), 10
 
+fixx = do ->
+	list = []
+	$(window).scroll ->
+		for el in list
+			el.css 'margin-top', (-$(window).scrollTop()) + 'px'
+	(el) ->
+		list.push $ el
+
 class Loader
 
 	constructor: ->
@@ -152,12 +160,13 @@ class CrewListView
 	
 	constructor: (@crews) ->
 		@container = $ '#main'
-		header = $ '''<div class="header-container fixx"><div class="header">
+		header = $ '''<div class="header-container"><div class="header">
 			<div class="row row-crew">Crew</div>
 			<div class="row row-rank">Overall Rank</div>
 			<div class="row row-week">Weekly Rank</div>
 			<div class="row row-members">Members</div>
 		</div></div>'''
+		fixx header
 		header.appendTo @container
 		@load()
 
@@ -249,5 +258,4 @@ class App
 
 $ ->
 	App.main()
-	$(window).scroll ->
-		$('.fixx').css 'margin-top', (-$(window).scrollTop()) + 'px'
+	fixx '.fixx'
