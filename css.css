@@ -1,0 +1,161 @@
+
+body {
+	padding: 40px 30px 20px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.progress-bar-container {
+	border: 1px solid #aaa;
+	background: #fff;
+	padding: 1px;
+	width: 300px;
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -151px;
+	z-index: 50;
+}
+
+.progress-bar {
+	background: #9ab;
+	height: 18px;
+	width: 0%;
+}
+
+.header {
+	color: #aaa;
+	text-transform: lowercase;
+	font-weight: bold;
+}
+
+.header-container, .crew-container {
+	position: absolute;
+	top: 170px;
+}
+
+.header-container {
+	left: 0;
+}
+
+.header-container, .header {
+	width: 150px;
+}
+
+.header {
+	position: fixed;
+	background: #fff;
+	padding-top: 30px;
+	margin-top: -30px;
+	z-index: 40;
+}
+
+.header .row {
+	padding-left: 30px;
+	text-align: right;
+}
+
+.row-crew {
+	height: 180px;
+}
+.row-rank {
+	height: 50px;
+}
+.row-week {
+	height: 60px;
+}
+
+.row-members {
+	height: 740px;
+}
+
+.crew {
+	width: 310px;
+	padding-left: 23px;
+}
+
+.crew .row-crew {
+	font-size: 40px;
+	font-weight: bold;
+	color: #333;
+}
+.crew .row-crew img {
+	width: 96px;
+	height: 96px;
+	display: block;
+	margin-bottom: 20px;
+	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+.crew .row-rank, .crew .row-week {
+	font-size: 30px;
+	font-weight: bold;
+	color: #666;
+}
+.header .row {
+	position: relative;
+	top: 10px;
+}
+.header .row-members {
+	top: 27px;
+}
+.member {
+	display: block;
+	height: 64px;
+	position: relative;
+	cursor: default;
+}
+.member .image img {
+	position: absolute; top: 0; left: 0;
+	display: block; width: 104px; height: 64px;
+}
+.member .plate {
+	position: absolute; top: 0; left: 104px;
+}
+.member .pattern {
+	width: 204px; height: 64px; background-repeat: no-repeat;
+	font: bold 12px/64px Arial,Helvetica,Geneva,sans-serif;
+	text-align: center; color: #fff;
+}
+.member .info {
+	position: absolute;
+	top: 0; left: 0; width: 310px; height: 64px;
+	background: #fff;
+}
+.member .info div {
+	font-size: 30px; line-height: 64px;
+	position: absolute;
+}
+.member .info .level {
+	font-weight: bold;
+	color: #aaa;
+	text-align: right;
+	width: 70px;
+}
+.member .info .name {
+	color: #000;
+	left: 85px;
+}
+.member .info .producer {
+	color: #a21;
+	padding-left: 10px;
+}
+.crew .points {
+	font-size: 15px;
+	padding-left: 10px;
+	font-weight: normal;
+	color: #222;
+}
+.role-leader .info .name {
+	color: #039;
+	font-weight: bold;
+}
+.weekly-course {
+	position: absolute;
+	top: 64px;
+	width: 310px;
+	height: 64px;
+	background: #fff;
+	text-align: center;
+}
+.weekly-course img {
+	width: 64px; height: 64px;
+}
