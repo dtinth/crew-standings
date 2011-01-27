@@ -98,6 +98,48 @@ class Loader
 				@onfinish()
 			@element.css 'width', Math.pow(@progress, 2) * 100 + '%'
 
+class Fader
+
+	constructor: (@element) ->
+		@element = $ @element
+		@opacity = parseFloat @element.css 'opacity'
+		@interval = 0
+
+	fadeIn: ->
+		@direction = 0.003
+		@startAnimation()
+
+	fadeOut: ->
+		@direction = -0.003
+		@startAnimation()
+	
+	startAnimation: ->
+		@stopAnimation()
+		@startTime = new Date().getTime()
+		@startOpacity = @opacity
+		@interval = setInterval =>
+			@animationFrame()
+		, 1000 / 60
+	
+	animationFrame: ->
+		elapsedTime = new Date().getTime() - @startTime
+		opacity = @startOpacity + @direction * elapsedTime
+		if opacity < 0
+			opacity = 0
+		else if opacity > 1
+			opacity = 1
+		@setOpacity opacity
+		if (opacity == 0 and @direction < 0) or (opacity == 1 and @direction > 0)
+			@stopAnimation()
+		
+	stopAnimation: ->
+		clearInterval @interval
+
+	setOpacity: (opacity) ->
+		@opacity = opacity
+		@element.css 'opacity', @opacity
+		@element.css 'display', if @opacity == 0 then 'none' else ''
+
 class CrewListItemView
 	
 	constructor: (@crew) ->
@@ -168,12 +210,13 @@ class CrewListItemView
 			view.find('.name').append('''<span class="producer" title="This week's course producer">★</span>''')
 		info = view.find('.info')
 		view.css 'z-index', @crew.members.length - index + 1
+		fader = new Fader(info)
 		view.hover ->
 			view.addClass('hover')
-			info.fadeOut()
+			fader.fadeOut()
 		, ->
 			view.addClass('hover')
-			info.fadeIn()
+			fader.fadeIn()
 		view.appendTo container
 
 class CrewListView
