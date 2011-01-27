@@ -22,6 +22,7 @@ crews = [
 	'SIAKON'
 	'('
 	'573'
+	'Sugoi! すごい'
 ]
 
 yql = do ->
