@@ -16,15 +16,7 @@ djmaxcrew_base = 'http://djmaxcrew.com'
 yql_base_uri = 'http://query.yahooapis.com/v1/public/yql'
 yql_cache_time = 1800
 
-crews = [
-	'THAILAND'
-	'The Storm'
-	'SIAKON'
-	'('
-	'573'
-	'Sugoi! すごい'
-	'BBG-RM3'
-]
+crews = window.crews
 
 yql = do ->
 	counter = 0
