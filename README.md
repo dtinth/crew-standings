@@ -1,4 +1,4 @@
-[crew-standings](http://dtinth.github.com/)
+[crew-standings](http://dtinth.github.com/crew-standings)
 ==============
 
 A simple mashup application which displays the current standings of selected crews in [DJMAX Technika 2: Crew Race](http://djmaxcrew.com/default.html).
