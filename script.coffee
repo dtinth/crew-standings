@@ -62,6 +62,8 @@ parseIntNumber = (number) ->
 	parseInt (number + '').replace(/[^0-9]/g, ''), 10
 
 fixx = do ->
+	if 'createTouch' of document
+		return ->
 	list = []
 	$(window).scroll ->
 		for el in list
@@ -263,6 +265,8 @@ class App
 		@crews.sort (a, b) ->
 			return a.rank - b.rank
 		new CrewListView @crews
+		if window.navigator.standalone
+			$(document.body).css 'min-height', (150 + 333 * @crews.length) * 3 / 4 + 'px'
 
 	loadWeekly: (page) ->
 		@loader.addObject()
@@ -324,3 +328,5 @@ class App
 $ ->
 	App.main()
 	fixx '.fixx'
+	if window.navigator.standalone
+		$('#fork').hide()
