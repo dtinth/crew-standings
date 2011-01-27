@@ -113,6 +113,18 @@ class CrewListItemView
 				else
 					'<div class="weekly-not-available">N/A</div>'
 			) + '''</div>
+			''' + (
+				if @crew.weekly?
+					'''<div class="row row-weekly weekly-data">
+						<img src="http://images.djmaxcrew.com/Technika2/EN/icon/technika2/disc_m/''' + @crew.weekly.song1 + '''.png" alt="''' + @crew.weekly.song1 + '''">
+						<img src="http://images.djmaxcrew.com/Technika2/EN/icon/technika2/disc_m/''' + @crew.weekly.song2 + '''.png" alt="''' + @crew.weekly.song2 + '''">
+						<img src="http://images.djmaxcrew.com/Technika2/EN/icon/technika2/disc_m/''' + @crew.weekly.song3 + '''.png" alt="''' + @crew.weekly.song3 + '''">
+					</div>'''
+				else
+					'''<div class="row row-weekly">
+						<div class="weekly-not-available">N/A</div>
+					</div>'''
+			) + '''
 			<div class="row row-members"></div>
 		</div></div>'''
 		view.css 'left', (150 + index * 333) + 'px'
@@ -138,28 +150,19 @@ class CrewListItemView
 				<div class="level">Lv.''' + member.level + '''</div>
 				<div class="name"></div>
 			</div>
-			''' + (if isProducer then '''<div class="weekly-course">
-				<img src="http://images.djmaxcrew.com/Technika2/EN/icon/technika2/disc_m/''' + @crew.weekly.song1 + '''.png" alt="''' + @crew.weekly.song1 + '''">
-				<img src="http://images.djmaxcrew.com/Technika2/EN/icon/technika2/disc_m/''' + @crew.weekly.song2 + '''.png" alt="''' + @crew.weekly.song2 + '''">
-				<img src="http://images.djmaxcrew.com/Technika2/EN/icon/technika2/disc_m/''' + @crew.weekly.song3 + '''.png" alt="''' + @crew.weekly.song3 + '''">
-			</div>''' else '') + '''
 		</div>'''
 		view.find('.pattern').text member.title
 		view.find('.name').text member.name
 		if isProducer
 			view.find('.name').append('''<span class="producer" title="This week's course producer">★</span>''')
 		info = view.find('.info')
-		weekly = view.find('.weekly-course')
 		view.css 'z-index', @crew.members.length - index + 1
 		view.hover ->
 			view.addClass('hover')
 			info.fadeOut()
-			weekly.fadeIn()
 		, ->
 			view.addClass('hover')
 			info.fadeIn()
-			weekly.fadeOut()
-		weekly.hide()
 		view.appendTo container
 
 class CrewListView
@@ -170,6 +173,7 @@ class CrewListView
 			<div class="row row-crew">Crew</div>
 			<div class="row row-rank">Overall Rank</div>
 			<div class="row row-week">Weekly Rank</div>
+			<div class="row row-weekly">Weekly Course</div>
 			<div class="row row-members">Members</div>
 		</div></div>'''
 		fixx header

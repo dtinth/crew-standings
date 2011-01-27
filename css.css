@@ -57,18 +57,22 @@ body {
 }
 
 .header .row {
-	padding-left: 30px;
+	padding-left: 20px;
 	text-align: right;
+	padding-right: 10px;
 }
 
 .row-crew {
 	height: 180px;
 }
 .row-rank {
-	height: 50px;
+	height: 55px;
 }
 .row-week {
-	height: 60px;
+	height: 40px;
+}
+.row-weekly {
+	height: 70px;
 }
 
 .row-members {
@@ -92,10 +96,16 @@ body {
 	margin-bottom: 20px;
 	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
-.crew .row-rank, .crew .row-week {
+.crew .row-rank, .crew .row-week, .crew .row-weekly {
 	font-size: 30px;
 	font-weight: bold;
 	color: #666;
+}
+.crew .row-weekly {
+	line-height: 64px;
+}
+.weekly-not-available {
+	color: #aaa;
 }
 .header .row {
 	position: relative;
@@ -103,6 +113,9 @@ body {
 }
 .header .row-members {
 	top: 27px;
+}
+.header .row-weekly {
+	top: 24px;
 }
 .member {
 	display: block;
@@ -155,14 +168,6 @@ body {
 	color: #039;
 	font-weight: bold;
 }
-.weekly-course {
-	position: absolute;
-	top: 64px;
-	width: 310px;
-	height: 64px;
-	background: #fff;
-	text-align: center;
-}
-.weekly-course img {
-	width: 64px; height: 64px;
+.weekly-data img {
+	width: 58px; height: 58px;
 }
