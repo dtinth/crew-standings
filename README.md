@@ -1,9 +1,16 @@
-crew-standings
+[crew-standings](http://dtinth.github.com/)
 ==============
 
 A simple mashup application which displays the current standings of selected crews in [DJMAX Technika 2: Crew Race](http://djmaxcrew.com/default.html).
 
-[__Crew Standings__ in action!](http://dtinth.github.com/crew-standings/)
+
+Notes
+-----
+
+* The list is sorted by __overall rank__ or __crew points__.
+* Too big? __Zoom out__ to see all crews!
+* Data is [cached](http://www.yqlblog.net/blog/2010/03/12/avoiding-rate-limits-and-getting-banned-in-yql-and-pipes-caching-is-your-friend/) for up to 30 minutes.
+* Crew names in the code are case-sensitive.
 
 
 Powered By
@@ -21,3 +28,8 @@ Tested Browser
 * MobileSafari on iPad (iOS 3.2)
 * Internet Explorer 7
 * Internet Explorer 6 (tested not to work!)
+
+
+License
+-------
+Licensed [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/).
