@@ -102,7 +102,7 @@ class CrewListItemView
 				if @crew.weekly?
 					'''<div class="weekly-info">
 						''' + @crew.weekly.rank + '''
-						<span class="points">''' + @crew.weekly.points + '''</span>
+						<span class="points">''' + @crew.weekly.points + ''' pts</span>
 					</div>'''
 				else
 					'<div class="weekly-not-available">N/A</div>'
