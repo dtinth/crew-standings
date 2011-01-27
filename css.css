@@ -20,6 +20,11 @@ body {
 	background: #9ab;
 	height: 18px;
 	width: 0%;
+	-moz-transition: 8s width ease-out;
+	-webkit-transition: 8s width ease-out;
+	-ms-transition: 8s width ease-out;
+	-o-transition: 8s width ease-out;
+	transition: 8s width ease-out;
 }
 
 .header {

@@ -76,10 +76,16 @@ class Loader
 			startPosition = if @loadedObjects > 1 then 1 - (1 - @progress) * (@totalObjects / (@totalObjects - @loadedObjects + 1)) else 0
 			endPosition = 1
 			@progress = startPosition + (@loadedObjects / @totalObjects) * (endPosition - startPosition)
-			@element.css 'width', Math.pow(@progress, 2) * 100 + '%'
 			if @loadedObjects == @totalObjects
-				@container.delay(500).fadeOut('slow')
+				@element.css
+					'-moz-transition': 'width 0.6s linear'
+					'-webkit-transition': 'width 0.6s linear'
+					'-ms-transition': 'width 0.6s linear'
+					'-o-transition': 'width 0.6s linear'
+					'transition': 'width 0.6s linear'
+				@container.delay(1000).fadeOut('slow')
 				@onfinish()
+			@element.css 'width', Math.pow(@progress, 2) * 100 + '%'
 
 class CrewListItemView
 	
