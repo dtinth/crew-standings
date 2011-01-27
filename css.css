@@ -12,6 +12,22 @@ h1 a:hover {
 	color: #444;
 }
 
+.status-bar-container {
+	background: #fff;
+	width: 500px;
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -250px;
+	z-index: 60;
+}
+.status-bar {
+	padding: 3px 0 50px;
+	text-align: center;
+}
+.error .status-bar {
+	color: #c00;
+}
 .progress-bar-container {
 	border: 1px solid #aaa;
 	background: #fff;
@@ -96,6 +112,10 @@ h1 a:hover {
 	font-size: 40px;
 	font-weight: bold;
 	color: #333;
+}
+.crew .row-crew a {
+	color: #333;
+	text-decoration: none;
 }
 .crew .row-crew img {
 	width: 96px;

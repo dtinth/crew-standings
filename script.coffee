@@ -16,7 +16,8 @@ djmaxcrew_base = 'http://djmaxcrew.com'
 yql_base_uri = 'http://query.yahooapis.com/v1/public/yql'
 yql_cache_time = 1800
 
-crews = window.crews
+crews = []
+default_crewgroup = 'thailand'
 
 yql = do ->
 	counter = 0
@@ -147,7 +148,7 @@ class CrewListItemView
 				<img src="http://promo.platinumcrew.co.kr/technika2/icon/technika2/emblem_big/pattern/''' + @crew.pattern + '''.png"
 					style="background: url(http://promo.platinumcrew.co.kr/technika2/icon/technika2/emblem_big/plate/''' + @crew.plate + '''.png) no-repeat"
 					alt="Pattern">
-				''' + @crew.name + '''
+				<a href="?crew=''' + encodeURIComponent(@crew.name) + '''">''' + @crew.name + '''</a>
 			</div>
 			<div class="row row-rank">
 				''' + @crew.rank + '''
@@ -237,12 +238,81 @@ class CrewListView
 			view.render index, @container
 			index++
 
+class CrewListLoader
+
+	constructor: (@crews) ->
+		@element = $('<div class="status-bar"></div>').appendTo(@container = $('<div class="status-bar-container"></div>'))
+
+	onfinish: ->
+
+	load: ->
+		matches = null
+		params = location.search + ''
+		params = params.replace /^\?/, ''
+		params = params.replace /\/$/, ''
+		if matches = params.match /^([a-z]+)$/
+			@loadGroup(matches[1])
+		else
+			options = {}
+			for option in ((decodeURIComponent(str) for str in param.split '=') for param in params.split '&')
+				if option.length > 1
+					options[option[0]] = option.slice(1).join('=')
+			if options['crew']?
+				@loadCrew(options['crew'])
+			else
+				@loadGroup(default_crewgroup)
+
+	loadCrew: (crewName) ->
+		@crews.push crewName
+		@onfinish()
+
+	loadGroup: (groupName) ->
+		@container.appendTo '#main'
+		@element.text 'Loading crew list from group "' + groupName + '"...'
+		$.ajax
+			type: 'GET'
+			url: 'groups/' + groupName + '.xml'
+			dataType: 'xml'
+			success: (xml) =>
+				@handleXML xml
+			error: (xhr, errorType) =>
+				@failure 'Unable to load crew group "' + groupName + '".'
+
+	handleXML: (xml) ->
+		xml = $ xml
+		for crew in xml.find('crew')
+			crew = $ crew
+			crewName = parseText crew.text()
+			@crews.push crewName
+		@finish()
+		@onfinish()
+
+	finish: ->
+		@element.text 'Crew List Loaded'
+		@container.fadeOut()
+
+	failure: (message) ->
+		@element.text message
+		@container.addClass 'error'
+
+
 class App
 
 	constructor: ->
+		@loadCrewList()
+
+	loadCrewList: ->
+		loader = new CrewListLoader(crews)
+		loader.onfinish = =>
+			@loadCrews()
+		loader.load()
+
+	loadCrews: ->
 		@loader = new Loader()
 		@loader.onfinish = =>
-			@loaded()
+			setTimeout =>
+				@loaded()
+			, 400
 		@crews = []
 		@weekly = {}
 		@loadWeekly 1
