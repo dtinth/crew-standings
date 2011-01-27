@@ -1,3 +1,14 @@
+###
+
+Crew Standings
+
+by Thai Pangsakulyanont (dtinth)
+http://github.com/dtinth/crew-standings
+
+Licensed CC BY 3.0
+http://creativecommons.org/licenses/by/3.0/
+
+###
 
 djmaxcrew_xpath = '//table[@width="960"]//table[@width="960"]//table[@width="960" and not(@height)]//table[@width="960"]//td[@width="725"]'
 djmaxcrew_base = 'http://djmaxcrew.com'
