@@ -317,7 +317,7 @@ class App
 		@weekly = {}
 		@loadWeekly 1
 		@loadWeekly 2
-		@loadWeekly 3
+		@loadWeekly 3, true
 		for crewName in crews
 			@loadCrew crewName
 
@@ -331,9 +331,10 @@ class App
 		if window.navigator.standalone
 			$(document.body).css 'min-height', (150 + 333 * @crews.length) * 3 / 4 + 'px'
 
-	loadWeekly: (page) ->
+	loadWeekly: (page, loadNext = false) ->
 		@loader.addObject()
 		fetchDoc djmaxcrew_base + '/crewrace/crewrace_ing.asp?page=' + page, (doc) =>
+			found = false
 			for tr in doc.find 'tr'
 				tr = $ tr
 				if tr.find('> td[height="40"] + td[width="10"]').length > 0
@@ -347,6 +348,9 @@ class App
 						rank:       parseNumber    tr.find('> td[width="70"] span.text11_4_b').text()
 					if info.name in crews
 						@weekly[info.name] = info
+					found = true
+			if found and loadNext
+				@loadWeekly page + 1, true
 			@loader.addProgress()
 
 	loadCrew: (crewName) ->
