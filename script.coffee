@@ -86,12 +86,12 @@ class Loader
 			@progress = startPosition + (@loadedObjects / @totalObjects) * (endPosition - startPosition)
 			if @loadedObjects == @totalObjects
 				@element.css
-					'-moz-transition': 'width 0.6s linear'
-					'-webkit-transition': 'width 0.6s linear'
-					'-ms-transition': 'width 0.6s linear'
-					'-o-transition': 'width 0.6s linear'
-					'transition': 'width 0.6s linear'
-				@container.delay(1000).fadeOut('slow')
+					'-moz-transition': 'width 0.3s linear'
+					'-webkit-transition': 'width 0.3s linear'
+					'-ms-transition': 'width 0.3s linear'
+					'-o-transition': 'width 0.3s linear'
+					'transition': 'width 0.3s linear'
+				@container.delay(1500).fadeOut('slow')
 				@onfinish()
 			@element.css 'width', Math.pow(@progress, 2) * 100 + '%'
 
