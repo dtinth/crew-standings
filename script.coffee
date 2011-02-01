@@ -192,7 +192,7 @@ class CrewListItemView
 			<div class="image">
 				<img alt="Icon" src="http://images.djmaxcrew.com/Technika2/EN/icon/technika2/icon_big/''' + member.icon + '''.png">
 				<div class="plate" style="background-image:url(http://images.djmaxcrew.com/Technika2/EN/icon/technika2/dj_title/usertitleplate/''' + member.plate + '''.png)">
-					<div class="pattern" style="background-image:url(http://images.djmaxcrew.com/Technika2/EN/icon/technika2/dj_title/usertitlepattern/''' + member.plate + '''.png)">
+					<div class="pattern" style="background-image:url(http://images.djmaxcrew.com/Technika2/EN/icon/technika2/dj_title/usertitlepattern/''' + member.pattern + '''.png)">
 					</div>
 				</div>
 			</div>
